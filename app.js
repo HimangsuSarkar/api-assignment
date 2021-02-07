@@ -1,31 +1,38 @@
+
+
 const searchButton = document.getElementById("searchButton");
-const mealList = document.getElementById("meal");
-searchButton.addEventListener('click', function () {
+searchButton.addEventListener("click", function () {
     let searchInput = document.getElementById("searchInput").value;
     fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`)
         .then(res => res.json())
         .then(data => {
-            let html = "";
+            const mealList = document.getElementById("meal");
+            let allMealListInfo = "";
             if (data.meals) {
                 data.meals.forEach(meal => {
-                    html += `
-                        <div class = "meal-item" data-id = "${meal.idMeal}">
-                            <div class = "meal-img">
-                                <img src = "${meal.strMealThumb}" alt = "food">
+                    allMealListInfo += `
+                        <div class = "mealItem" data-id = "${meal.idMeal}">
+                            <div class = "mealImg">
+                                <img src = "${meal.strMealThumb}">
                             </div>
-                            <div class = "meal-name">
-                                <h3>${meal.strMeal}</h3>
-                                <a href = "#" class = "recipe-btn">Get Recipe</a>
+                            <div class = "mealName">
+                               <h3>${meal.strMeal}</h3>
                             </div>
                         </div>
-                    `;
+                        `;
                 });
-                mealList.classList.remove('notFound');
+                //mealList.classList.remove('notFound');
             } else {
-                html = "Sorry, we didn't find any meal!";
-                mealList.classList.add('notFound');
+                allMealListInfo = "Your Meal Not Found!,Please Write Down correct meal Name";
+                // mealList.classList.add('notFound');
             }
 
-            mealList.innerHTML = html;
+            mealList.innerHTML = allMealListInfo;
         });
 })
+
+// const mealItemList = document.getElementsByClassName("mealItem");
+// mealItemList.addEventListener("click", function () {
+//     console.log("clicked section");
+
+// })

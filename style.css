@@ -17,15 +17,21 @@
 }
 
 #meal{
-    margin: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-gap: 40px;
+    margin-top: 50px;
+
 }
-.meal-item{
-    border-radius: 20px;
+.mealItem{
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px gray;
+    background-color: rgb(223, 227, 228);
 }
-.meal-img img{
+.mealImg img{
     width: 100%;
     display: block;
+}
+.mealName{
+    text-align: center;
 }
