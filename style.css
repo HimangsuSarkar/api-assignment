@@ -10,7 +10,7 @@ body{
 .inputSection{
     max-width: 70%;
     margin:0 auto;
-
+    height: 80px;
 }
 .inputSection input{
     width: 65%;
@@ -47,11 +47,14 @@ body{
 }
 
 #ingredientsDetails{
-    max-width: 40%;
+    max-width: 60%;
     margin:auto;
+    border-radius: 20px;
+    padding: 15px;
 }
 
 #ingredientsDetails img{
     width: 300px;
-    margin-top: 50px;
+    text-align: center;
+    border-radius: 15px;
 }
