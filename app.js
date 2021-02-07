@@ -1,5 +1,5 @@
 
-
+//handler and event listeners also get all meal list together
 const searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", function () {
     let searchInput = document.getElementById("searchInput").value;
@@ -11,7 +11,7 @@ searchButton.addEventListener("click", function () {
             if (data.meals) {
                 data.meals.forEach(meal => {
                     allMealListInfo += `
-                        <div  onclick="displayIngredients(${meal.idMeal})"  class = "mealItem" data-id = "${meal.idMeal}">
+                        <div  onclick="displayIngredients(${meal.idMeal})"  class = "mealItem" meal-id = "${meal.idMeal}">
                             <div class = "mealImg">
                                 <img src = "${meal.strMealThumb}">
                             </div>
@@ -21,23 +21,23 @@ searchButton.addEventListener("click", function () {
                         </div >
                     `;
                 });
-                //mealList.classList.remove('notFound');
             } else {
                 allMealListInfo = "Your Meal Not Found!,Please Write Down correct meal Name";
-                // mealList.classList.add('notFound');
             }
-
             mealList.innerHTML = allMealListInfo;
         });
 })
 
+
+//function for get ingredients
 const displayIngredients = idMeal => {
-    //const ingredientsUrl = `https:/ / www.themealdb.com / api / json / v1 / 1 / lookup.php ? ${ idMeal } `
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php/?i=${idMeal}`)
         .then(res => res.json())
         .then(data => displayIngredientsDetails(data.meals[0]));
 
 }
+
+//function for get details of ingredients
 const displayIngredientsDetails = meal => {
     const IngredientsDetails = document.getElementById("ingredientsDetails");
     IngredientsDetails.innerHTML = `
