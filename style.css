@@ -1,0 +1,31 @@
+.inputSection{
+    max-width: 70%;
+    margin: 0 auto;;
+}
+.inputSection input{
+    width: 65%;
+    border-radius:  25px 0px 0px 25px;
+    padding: 10px;
+}
+.inputSection button{
+    width: 25%;
+    margin-left: -6px;
+    background-color: skyblue;
+    border: none;
+    padding: 12px;
+    border-radius:  0px 25px 25px 0px;
+}
+
+#meal{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+.meal-item{
+    border-radius: 20px;
+}
+.meal-img img{
+    width: 100%;
+    display: block;
+}
