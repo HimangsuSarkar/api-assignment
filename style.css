@@ -1,6 +1,16 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 100%;
+    margin: 30px;
+}
 .inputSection{
     max-width: 70%;
-    margin: 0 auto;;
+    margin:0 auto;
+
 }
 .inputSection input{
     width: 65%;
@@ -34,4 +44,14 @@
 }
 .mealName{
     text-align: center;
+}
+
+#ingredientsDetails{
+    max-width: 40%;
+    margin:auto;
+}
+
+#ingredientsDetails img{
+    width: 300px;
+    margin-top: 50px;
 }

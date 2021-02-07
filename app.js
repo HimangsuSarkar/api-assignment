@@ -11,15 +11,15 @@ searchButton.addEventListener("click", function () {
             if (data.meals) {
                 data.meals.forEach(meal => {
                     allMealListInfo += `
-                        <div class = "mealItem" data-id = "${meal.idMeal}">
+                        <div  onclick="displayIngredients(${meal.idMeal})"  class = "mealItem" data-id = "${meal.idMeal}">
                             <div class = "mealImg">
                                 <img src = "${meal.strMealThumb}">
                             </div>
                             <div class = "mealName">
-                               <h3>${meal.strMeal}</h3>
-                            </div>
-                        </div>
-                        `;
+                                <h3> ${meal.strMeal}</h3 >
+                            </div >
+                        </div >
+                    `;
                 });
                 //mealList.classList.remove('notFound');
             } else {
@@ -31,8 +31,28 @@ searchButton.addEventListener("click", function () {
         });
 })
 
-// const mealItemList = document.getElementsByClassName("mealItem");
-// mealItemList.addEventListener("click", function () {
-//     console.log("clicked section");
+const displayIngredients = idMeal => {
+    //const ingredientsUrl = `https:/ / www.themealdb.com / api / json / v1 / 1 / lookup.php ? ${ idMeal } `
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php/?i=${idMeal}`)
+        .then(res => res.json())
+        .then(data => displayIngredientsDetails(data.meals[0]));
 
-// })
+}
+const displayIngredientsDetails = meal => {
+    const IngredientsDetails = document.getElementById("ingredientsDetails");
+    IngredientsDetails.innerHTML = `
+    <img src="${meal.strMealThumb}">
+    <h2>Meal Name:${meal.strMeal}</h2>
+    <h3>Ingredients</h3>
+    <ul>
+    <li>${meal.strIngredient1}</li>
+    <li>${meal.strIngredient2}</li>
+    <li>${meal.strIngredient3}</li>
+    <li>${meal.strIngredient4}</li>
+    <li>${meal.strIngredient5}</li>
+    <li>${meal.strIngredient6}</li>
+    </ul>
+
+
+    `;
+}
